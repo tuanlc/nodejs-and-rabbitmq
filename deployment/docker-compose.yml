@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.16-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "5672"]
+      interval: 5s
+      timeout: 15s
+      retries: 1
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin123
+      - RABBITMQ_HIPE_COMPILE=1
+    networks:
+      - node-and-amqp
+  app:
+    build: ../app
+    ports:
+      - 8081:8080
+    links:
+      - rabbitmq
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+    environment:
+      - RABBITMQ_USER=admin
+      - RABBITMQ_PASS=admin123
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+    networks:
+      - node-and-amqp
+networks:
+  node-and-amqp:
+    driver: bridge
