@@ -20,3 +20,23 @@ $ git clone path-to-project
 $ cd deployemt
 $ docker compose up --build
 ```
+
+## Sample result from console
+```bash
+deployment-app-1       | AMQP: Published a message with the topic 'node-and-amqp' and data: Hello Pineapple 6
+deployment-app-1       | AMQP: publishing message to: node-and-amqp
+deployment-app-1       | Received message { content: '"Hello Pineapple 7"' }
+deployment-app-1       | AMQP: Published a message with the topic 'node-and-amqp' and data: Hello Pineapple 7
+deployment-app-1       | AMQP: publishing message to: node-and-amqp
+deployment-app-1       | Received message { content: '"Hello Pineapple 8"' }
+deployment-app-1       | AMQP: Published a message with the topic 'node-and-amqp' and data: Hello Pineapple 8
+deployment-app-1       | AMQP: publishing message to: node-and-amqp
+deployment-app-1       | Received message { content: '"Hello Pineapple 9"' }
+deployment-app-1       | AMQP: Published a message with the topic 'node-and-amqp' and data: Hello Pineapple 9
+deployment-app-1       | AMQP: publishing message to: node-and-amqp
+deployment-app-1       | Received message { content: '"Hello Pineapple 10"' }
+deployment-app-1       | AMQP: Published a message with the topic 'node-and-amqp' and data: Hello Pineapple 10
+deployment-app-1       | AMQP: publishing message to: node-and-amqp
+deployment-app-1       | Received message { content: '"Hello Pineapple 11"' }
+deployment-app-1       | AMQP: Published a message with the topic 'node-and-amqp' and data: Hello Pineapple 11
+```
